@@ -18,8 +18,8 @@
                     <form method="post" action="{% url 'book_ticket' event.id %}">
                         {% csrf_token %}
                         <input type="hidden" name="ticket_type" value="{{ ticket.ticket_type }}">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" name="quantity" id="quantity" min="1" max="{{ ticket.quantity_available }}" required>
+                        
+                        <input type="hidden" name="quantity" id="quantity" value=1 min="1" max="{{ ticket.quantity_available }}" required>
                         <button type="submit" class="btn btn-primary">Book Now</button>
                     </form>
                 </li>

@@ -55,7 +55,7 @@
 <!-- Content -->
 <div class="container mt-4">
     {% if user.is_superuser %}
-    <a href="{% url 'participants_list' %}">Participants list</a>
+    {% comment %} <a href="{% url 'participants_list' %}">Participants list</a> {% endcomment %}
     {% endif %}
     {% block content %}
     {% endblock %}

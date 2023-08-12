@@ -1,29 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Events{% endblock title %}
 
-
-
-
 {% block content %}
-<div class="row">
+<div class="row mt-4">
     <div class="col-md-8 offset-md-2">
-        <h2>Available Events</h2>
-        <ul class="list-group">
+        <h2 class="mb-4">Available Events</h2>
+        <div class="list-group">
             {% for event in events %}
-                <li class="list-group-item">
-                    <h3>{{ event.title }}</h3>
+                <div class="list-group-item mb-4">
+                    <h3 class="mb-2">{{ event.title }}</h3>
                     <p>{{ event.description }}</p>
-                    <p>Location: {{ event.location }}</p>
-                    <p>Start Date: {{ event.start_date }}</p>
-                    <p>End Date: {{ event.end_date }}</p>
-                    <a href="{% url 'event_detail' event.id %}" class="btn btn-primary">Details</a>
+                    <p><strong>Location:</strong> {{ event.location }}</p>
+                    <p><strong>Start Date:</strong> {{ event.start_date }}</p>
+                    <p><strong>End Date:</strong> {{ event.end_date }}</p>
+                    <a href="{% url 'event_detail' event.id %}" class="btn btn-primary mr-2">Details</a>
 
-                    {% if user.is_superuser %}<a href="{% url 'event_participants_list' event.id %}" class="btn btn-primary">Participant list</a>{% endif %}
-                </li>
+                    {% if user.is_superuser %}
+                        <a href="{% url 'event_participants_list' event.id %}" class="btn btn-info">Participant list</a>
+                    {% endif %}
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
-
-
