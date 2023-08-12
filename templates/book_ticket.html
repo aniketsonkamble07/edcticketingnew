@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Book Ticket{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2>Book Tickets for {{ event.title }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                
+            <div class="mb-3" style='visibility:hidden'>
+                <label for="quantity" class="form-label" >Quantity:</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" value=1 min="1" max="{{ max_quantity }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="mobile_number" class="form-label">Mobile Number:</label>
+                <input type="text" class="form-control" id="mobile_number" name="mobile_number" required>
+            </div>
+            <div class="mb-3">
+                <label for="participant_class" class="form-label">Participant Class:</label>
+                <input type="text" class="form-control" id="participant_class" name="participant_class" required>
+            </div>
+            <div class="mb-3">
+                <label for="branch" class="form-label">Branch:</label>
+                <input type="text" class="form-control" id="branch" name="branch" required>
+            </div>
+            <div class="mb-3">
+                <label for="college" class="form-label">College:</label>
+                <input type="text" class="form-control" id="college" name="college" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Book Now</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

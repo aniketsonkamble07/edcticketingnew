@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}{{event.title}} Details {% endblock title %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2>{{ event.title }}</h2>
+        <p>{{ event.description }}</p>
+        <p>Location: {{ event.location }}</p>
+        <p>Start Date: {{ event.start_date }}</p>
+        <p>End Date: {{ event.end_date }}</p>
+        <h3>Available Tickets</h3>
+        <ul class="list-group">
+            {% for ticket in available_tickets %}
+                <li class="list-group-item">
+                    <h4>{{ ticket.ticket_type }}</h4>
+                    <p>Price: {{ ticket.price }}</p>
+                    <p>Quantity Available: {{ ticket.quantity_available }}</p>
+                    <form method="post" action="{% url 'book_ticket' event.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="ticket_type" value="{{ ticket.ticket_type }}">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" name="quantity" id="quantity" min="1" max="{{ ticket.quantity_available }}" required>
+                        <button type="submit" class="btn btn-primary">Book Now</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

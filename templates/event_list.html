@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Events{% endblock title %}
+
+
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2>Available Events</h2>
+        <ul class="list-group">
+            {% for event in events %}
+                <li class="list-group-item">
+                    <h3>{{ event.title }}</h3>
+                    <p>{{ event.description }}</p>
+                    <p>Location: {{ event.location }}</p>
+                    <p>Start Date: {{ event.start_date }}</p>
+                    <p>End Date: {{ event.end_date }}</p>
+                    <a href="{% url 'event_detail' event.id %}" class="btn btn-primary">Details</a>
+
+                    {% if user.is_superuser %}<a href="{% url 'event_participants_list' event.id %}" class="btn btn-primary">Participant list</a>{% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+

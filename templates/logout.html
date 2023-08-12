@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2>Logged Out</h2>
+        <p>You have been successfully logged out. Thank you for using our event ticketing system.</p>
+        <a href="{% url 'event_list' %}" class="btn btn-primary">Home</a>
+    </div>
+</div>
+{% endblock %}
