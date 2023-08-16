@@ -49,18 +49,18 @@ def book_ticket(request, event_id):
                 ticket.quantity_available -= quantity
                 ticket.save()
                 # Send email to user
-                # subject = 'Ticket Booking Confirmation'
-                # message = f"Dear {user.username},\n\nYou have successfully booked {quantity} ticket(s) for the event '{event.title}'.\n\nThank you!"
-                # print(message)
-                # from_email = settings.DEFAULT_FROM_EMAIL
-                # recipient_list = [form.cleaned_data['email']]
-                # print(recipient_list, from_email)
-                # send_mail(subject, message, from_email, recipient_list)
+                subject = 'Ticket Booking Confirmation'
+                message = f"Dear {form.cleaned_data['name']},\n College: {form.cleaned_data['college']}\n\nYou have successfully booked {quantity} ticket(s) for the event '{event.title}'.\n\nThank you!"
+                print(message)
+                from_email = '21142014@pvgcoet.ac.in'
+                recipient_list = [form.cleaned_data['email']]
+                print(recipient_list, from_email)
+                send_mail(subject, message, from_email, recipient_list, auth_user='21142014@pvgcoet.ac.in', auth_password='Manjusha@123')
 
 
 
                 messages.success(request, 'Ticket booked successfully!')
-                return redirect('event_detail', event_id=event.id)
+                return redirect('user_pprofile')
             else:
                 messages.error(request, 'Sorry, the requested ticket quantity is not available.')
 
@@ -107,5 +107,5 @@ def participants_list(request):
 # Event wise participants list
 def event_participants_list(request, event_id):
     participants = Participant.objects.filter(event=event_id)
-    return render(request, 'participants_list.html', {'participants': participants})
+    return render(request, 'event_participants_list.html', {'participants': participants})
 
