@@ -18,9 +18,14 @@
                     <form method="post" action="{% url 'book_ticket' event.id %}">
                         {% csrf_token %}
                         <input type="hidden" name="ticket_type" value="{{ ticket.ticket_type }}">
-                        
+                        {% if user.is_authenticated %}
                         <input type="hidden" name="quantity" id="quantity" value=1 min="1" max="{{ ticket.quantity_available }}" required>
                         <button type="submit" class="btn btn-primary">Book Now</button>
+                        {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-primary">Login to Book</a>
+
+                        {% endif %}
+
                     </form>
                 </li>
             {% endfor %}
