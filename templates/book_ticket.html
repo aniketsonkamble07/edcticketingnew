@@ -1,43 +1,53 @@
 {% extends 'base.html' %}
+
 {% block title %}Book Ticket{% endblock title %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-        <h2>Book Tickets for {{ event.title }}</h2>
-        <form method="post">
+<div class="container mx-auto mt-8">
+    <div class="w-full md:w-8/12 mx-auto p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-center mb-4 text-gray-800">Book Tickets for {{ event.title }}</h2>
+        <form method="post" class="space-y-4">
+
             {% csrf_token %}
-            <div class="mb-3">
-                
-            <div class="mb-3" style='visibility:hidden'>
-                <label for="quantity" class="form-label" >Quantity:</label>
-                <input type="number" class="form-control" id="quantity" name="quantity" value=1 min="1" max="{{ max_quantity }}" required>
+
+            <div class="mb-4">
+                <label for="quantity" class="block text-gray-700">Quantity:</label>
+                <input type="number" class="form-input w-full p-2 border rounded-lg focus:outline-none focus:border-blue-500" id="quantity" name="quantity" value="1" min="1" max="{{ max_quantity }}" required>
             </div>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700">Name:</label>
+                <input type="text" class="form-input w-full p-2 border rounded-lg focus:outline-none focus:border-blue-500" id="name" name="name" required>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700">Email:</label>
+                <input type="email" class="form-input w-full p-2 border rounded-lg focus:outline-none focus:border-blue-500" id="email" name="email" required>
             </div>
-            <div class="mb-3">
-                <label for="mobile_number" class="form-label">Mobile Number:</label>
-                <input type="text" class="form-control" id="mobile_number" name="mobile_number" required>
+
+            <div class="mb-4">
+                <label for="mobile_number" class="block text-gray-700">Mobile Number:</label>
+                <input type="text" class="form-input w-full p-2 border rounded-lg focus:outline-none focus:border-blue-500" id="mobile_number" name="mobile_number" required>
             </div>
-            <div class="mb-3">
-                <label for="participant_class" class="form-label">Participant Class:</label>
-                <input type="text" class="form-control" id="participant_class" name="participant_class" required>
+
+            <div class="mb-4">
+                <label for="participant_class" class="block text-gray-700">Participant Class:</label>
+                <input type="text" class="form-input w-full p-2 border rounded-lg focus:outline-none focus:border-blue-500" id="participant_class" name="participant_class" required>
             </div>
-            <div class="mb-3">
-                <label for="branch" class="form-label">Branch:</label>
-                <input type="text" class="form-control" id="branch" name="branch" required>
+
+            <div class="mb-4">
+                <label for="branch" class="block text-gray-700">Branch:</label>
+                <input type="text" class="form-input w-full p-2 border rounded-lg focus:outline-none focus:border-blue-500" id="branch" name="branch" required>
             </div>
-            <div class="mb-3">
-                <label for="college" class="form-label">College:</label>
-                <input type="text" class="form-control" id="college" name="college" required>
+
+            <div class="mb-4">
+                <label for="college" class="block text-gray-700">College:</label>
+                <input type="text" class="form-input w-full p-2 border rounded-lg focus:outline-none focus:border-blue-500" id="college" name="college" required>
             </div>
-            <button type="submit" class="btn btn-primary">Book Now</button>
+
+            <div class="mb-4">
+                <button type="submit" class="btn-primary w-full py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition duration-300 ease-in-out">Book Now</button>
+            </div>
         </form>
     </div>
 </div>
