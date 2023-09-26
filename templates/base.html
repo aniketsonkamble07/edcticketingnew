@@ -19,21 +19,7 @@
                 <li class="nav-item">
                     <a class="text-white hover:text-blue-200" href="{% url 'event_list' %}">Events</a>
                 </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="text-white hover:text-blue-200" href="{% url 'user_profile' %}">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="text-white hover:text-blue-200" href="{% url 'logout' %}">Logout</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="text-white hover:text-blue-200" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="text-white hover:text-blue-200" href="{% url 'register' %}">Register</a>
-                    </li>
-                {% endif %}
+              
             </ul>
         </div>
     </div>
